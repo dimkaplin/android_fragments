@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="dictionary">
+        <item>Дрель</item>
+        <item>Шуроповерт</item>
+        <item>Ножевка</item>
+        <item>Гвоздодер</item>
+    </string-array>
 </resources>
