@@ -1,3 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="dictionary">
+        <item>Дрель</item>
+        <item>Шуроповерт</item>
+        <item>Ножевка</item>
+        <item>Гвоздодер</item>
+    </string-array>
+    <string-array name="description">
+        <item>У Сереге</item>
+        <item>У Паши</item>
+        <item>У Васи</item>
+        <item>У Леши</item>
+    </string-array>
+    <array name="pictures">
+        <item>@drawable/_0thshades</item>
+        <item>@drawable/documentation</item>
+        <item>@drawable/house</item>
+        <item>@drawable/leonard</item>
+    </array>
 </resources>
