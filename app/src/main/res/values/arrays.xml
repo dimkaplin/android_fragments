@@ -6,4 +6,16 @@
         <item>Ножевка</item>
         <item>Гвоздодер</item>
     </string-array>
+    <string-array name="description">
+        <item>У Сереге</item>
+        <item>У Паши</item>
+        <item>У Васи</item>
+        <item>У Леши</item>
+    </string-array>
+    <array name="pictures">
+        <item>@drawable/_0thshades</item>
+        <item>@drawable/documentation</item>
+        <item>@drawable/house</item>
+        <item>@drawable/leonard</item>
+    </array>
 </resources>

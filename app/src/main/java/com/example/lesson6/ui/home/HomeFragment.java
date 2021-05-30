@@ -5,16 +5,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lesson6.ImplLikeSource;
 import com.example.lesson6.ItemAdapter;
+import com.example.lesson6.NavigationActivity;
 import com.example.lesson6.R;
 import com.example.lesson6.databinding.FragmentHomeBinding;
 
@@ -48,7 +52,18 @@ public class HomeFragment extends Fragment {
         rView.setHasFixedSize(true);
         LinearLayoutManager lManager = new LinearLayoutManager(getContext());
         rView.setLayoutManager(lManager);
-        rView.setAdapter(new ItemAdapter(innerList()));
+        DividerItemDecoration decorator = new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL);
+        rView.addItemDecoration(decorator);
+        //ItemAdapter iAdapter = new ItemAdapter(innerList());
+        ItemAdapter iAdapter = new ItemAdapter(new ImplLikeSource(getResources()).init());
+        rView.setAdapter(iAdapter);
+
+        iAdapter.setListener(new ItemAdapter.ItemClickListerner() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(getContext(), "pop:", Toast.LENGTH_LONG).show();
+            }
+        });
 
         return root;
     }
