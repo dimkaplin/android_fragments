@@ -1,6 +1,7 @@
 package com.example.lesson6;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
@@ -24,6 +27,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewAdapte
     private ImplLikeSource likeSource;
     public static final String LLOG = "LLOK";
     private ItemClickListerner listener;
+    private Fragment fragment;
+    private int menuPosition;
 
      public interface ItemClickListerner {
         void onItemClick(int position);
@@ -41,6 +46,11 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewAdapte
         this.likeSource = data;
     }
 
+    public ItemAdapter(ImplLikeSource data, Fragment fragment) {
+        this.likeSource = data;
+        this.fragment = fragment;
+    }
+
     @NonNull
     @NotNull
     @Override
@@ -49,6 +59,10 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewAdapte
                 .inflate(R.layout.recyclingitem, parent, false);
         Log.d(LLOG, "onCreated");
         return new ItemViewAdapter(v);
+    }
+
+    public int getMenuPosition() {
+        return menuPosition;
     }
 
     @SuppressLint("ResourceAsColor")
@@ -89,6 +103,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewAdapte
             description = itemView.findViewById(R.id.description);
             picture = itemView.findViewById(R.id.image_item_rec);
             likeCB = itemView.findViewById(R.id.like_cb);
+            if (fragment != null) {
+                fragment.registerForContextMenu(itemView);
+            }
         }
 
         void bind(DataLike data) {
@@ -104,6 +121,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewAdapte
                     if (listener != null) {
                         listener.onItemClick(getAdapterPosition());
                     }
+                }
+            });
+
+            picture.setOnLongClickListener(new View.OnLongClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.N)
+                @Override
+                public boolean onLongClick(View view) {
+                    menuPosition = getLayoutPosition();
+                    view.showContextMenu(10, 10);
+                    return true;
                 }
             });
         }
