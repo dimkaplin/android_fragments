@@ -39,4 +39,24 @@ public class ImplLikeSource implements LikeSource {
     public int size() {
         return listDataLike.size();
     }
+
+    @Override
+    public void deleteDataLike(int position) {
+       listDataLike.remove(position);
+    }
+
+    @Override
+    public void updateDataLike(int position, DataLike data) {
+        listDataLike.set(position, data);
+    }
+
+    @Override
+    public void addDataLike(DataLike data) {
+       listDataLike.add(data);
+    }
+
+    @Override
+    public void clearDataLike(int position) {
+        listDataLike.clear();
+    }
 }

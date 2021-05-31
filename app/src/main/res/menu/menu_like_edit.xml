@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item
+    android:id="@+id/like_add"
+    android:icon="@android:drawable/ic_menu_add"
+    android:orderInCategory="10"
+    app:showAsAction="always"
+    android:title="@string/add_like_title" />
+<item
+        android:id="@+id/like_edit"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:orderInCategory="10"
+        app:showAsAction="always"
+        android:title="@string/edit_like_title" />
+
+</menu>
