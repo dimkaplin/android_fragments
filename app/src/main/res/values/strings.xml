@@ -22,4 +22,8 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="add_like_title">Add</string>
+    <string name="edit_like_title">Edit</string>
+    <string name="update_like_title">Обновить</string>
+    <string name="delete_like_title">Удалить</string>
 </resources>
